@@ -41,8 +41,13 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
+
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
 });
 
@@ -61,12 +66,11 @@ app.get("/scrape", function (req, res) {
     axios.get("https://www.npr.org/sections/news/").then(function (response) {
 
         // Log Response
-        console.log("Response:");
-        console.log(response);
+        // console.log("Response:");
+        // console.log(response);
 
-        // Log Response.Data
-        console.log("Response Data:");
-        console.log(response.data);
+        // console.log("Response Data:");
+        // console.log(response.data);
 
         // Then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(response.data);
