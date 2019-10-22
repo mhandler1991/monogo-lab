@@ -2,7 +2,6 @@
 
 var mongoose = require("mongoose");
 
-// Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
 // Schema Constructor
@@ -13,7 +12,7 @@ var ArticleSchema = new Schema({
         // field type of string
       type: String,
         // field is required
-      required: true,
+    //   required: true,
         // field is unique (this will ensure that we are not re-populating the same data/articles in to the db)
     //   unique: true
     },
@@ -23,7 +22,7 @@ var ArticleSchema = new Schema({
         // field type of string
       type: String,
         // fied is required
-      required: true
+    //   required: true
     },
 
 

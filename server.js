@@ -58,8 +58,8 @@ app.set("view engine", "handlebars");
 // *****************************
 // *****************************
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+// If deployed, use the deployed database. Otherwise use the local database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/dbArticle";
 
 
 // Connect to the Mongo DB
@@ -67,8 +67,11 @@ mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
 });
 
+
+// *****************************
 // *****************************
 //  ROUTES
+// *****************************
 // *****************************
 
 
@@ -130,7 +133,7 @@ app.get("/scrape", function (req, res) {
 
 // Route for getting all Articles from the db
 // *****************************
-app.get("/articles", function (req, res) {
+app.get("/Articles", function (req, res) {
     // Grab every document in the Articles collection
     db.Article.find({})
         .then(function (dbArticle) {

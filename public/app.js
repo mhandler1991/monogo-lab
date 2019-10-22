@@ -1,11 +1,10 @@
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
+$.getJSON("/Articles", function(data) {
 
     db.Article.find({})
     .then(function(dbArticle) {
         // Grab the result of the data pull
       res.json(dbArticle);
-
     //   Send to main page??
 
     })
