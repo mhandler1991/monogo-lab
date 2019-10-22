@@ -1,12 +1,19 @@
+<h1>Articles</h1>
+
 <li>
+
+    {{#each Articles}}
+
     <div>
 
-	<button class="title" data-id="{{id}}">
-        {{title}}
-	</button>
+	    <button class="title" data-id="{{id}}">
+            {{title}}
+	    </button>
 
-    <p>{{link}}</p>
+        <p>{{link}}</p>
 
     </div>
+
+    {{/each}}
 
 </li>
