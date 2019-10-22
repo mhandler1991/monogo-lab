@@ -16,6 +16,10 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 
+// Handlebars
+
+var exphbs = require("express-handlebars");
+
 // Require all models
 var db = require("./models");
 
@@ -46,13 +50,13 @@ app.use(express.static("public"));
 // Set Handlebars.
 // *****************************
 
-var exphbs = require("express-handlebars");
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({
+    defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 
-
-
+// *****************************
+// *****************************
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
@@ -68,6 +72,11 @@ mongoose.connect(MONGODB_URI, {
 // *****************************
 
 
+// Home Page
+// *****************************
+app.get('/', function (req, res) {
+    res.render('index', /* PROVIDE DATA HERE */);
+});
 
 // SCRAPE THE WEBSITE
 // *****************************
@@ -121,18 +130,18 @@ app.get("/scrape", function (req, res) {
 
 // Route for getting all Articles from the db
 // *****************************
-app.get("/articles", function(req, res) {
+app.get("/articles", function (req, res) {
     // Grab every document in the Articles collection
     db.Article.find({})
-      .then(function(dbArticle) {
-        // If we were able to successfully find Articles, send them back to the client
-        res.json(dbArticle);
-      })
-      .catch(function(err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-      });
-  });
+        .then(function (dbArticle) {
+            // If we were able to successfully find Articles, send them back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+});
 
 
 // Route for getting an Article by Id
@@ -151,6 +160,6 @@ app.get("/articles", function(req, res) {
 // *****************************
 
 // Start the server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
-  });
+});
