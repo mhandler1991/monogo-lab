@@ -78,7 +78,19 @@ mongoose.connect(MONGODB_URI, {
 // Home Page
 // *****************************
 app.get('/', function (req, res) {
-    res.render('index', /* PROVIDE DATA HERE */);
+    db.Article.find({})
+    .then(function (dbArticle) {
+        // Console Log Response from Mongo Find
+        console.log(dbArticle);
+        // If we were able to successfully find Articles, send them back to the client
+        res.render('index', dbArticle);
+        // res.json(dbArticle);
+    })
+    .catch(function (err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+    });
+
 });
 
 // SCRAPE THE WEBSITE
