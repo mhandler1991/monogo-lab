@@ -12,9 +12,9 @@ var ArticleSchema = new Schema({
         // field type of string
       type: String,
         // field is required
-      required: true,
-        // field is unique (this will ensure that we are not re-populating the same data/articles in to the db)
-      unique: true
+    //   required: true,
+    //     // field is unique (this will ensure that we are not re-populating the same data/articles in to the db)
+    //   unique: true
     },
 
     // `link` is required and of type String
@@ -22,7 +22,7 @@ var ArticleSchema = new Schema({
         // field type of string
       type: String,
         // fied is required
-      required: true
+    //   required: true
     },
 
 
