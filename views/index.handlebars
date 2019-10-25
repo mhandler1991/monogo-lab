@@ -10,12 +10,15 @@
         <div class="card-body">
 
 {{!-- CREATE A BUTTON WITH THE TITLE --}}
-	    <h4 class="title-bttn" data-id="{{id}}">
+	    <h4 class="title-bttn">
             {{title}}
 	    </h4>
 
 {{!-- DISPLAY LINK --}}
 <a href='{{link}}'>LINK</a>
+
+{{!-- NOTES BUTTON --}}
+<button type="button" data-id="{{id}}" class="btn btn-secondary" data-toggle="modal" style="float: right;" id="modalBttn">Note</button>
 
         </div>
     </div>
