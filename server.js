@@ -58,8 +58,11 @@ app.set("view engine", "handlebars");
 // *****************************
 // *****************************
 
+var gitMongo = "mongodb://ArticleDBUser:password1@ds115350.mlab.com:15350/heroku_fv7nnn0j"
+var localMongo = "mongodb://localhost/dbArticle"
+
 // If deployed, use the deployed database. Otherwise use the local database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/dbArticle";
+var MONGODB_URI = gitMongo || localMongo;
 
 
 // Connect to the Mongo DB
@@ -147,15 +150,7 @@ app.get("/scrape", function (req, res) {
 // *****************************
 app.get("/Articles", function (req, res) {
     // Grab every document in the Articles collection
-    db.Article.find({})
-        .then(function (dbArticle) {
-            // If we were able to successfully find Articles, send them back to the client
-            res.json(dbArticle);
-        })
-        .catch(function (err) {
-            // If an error occurred, send it to the client
-            res.json(err);
-        });
+
 });
 
 

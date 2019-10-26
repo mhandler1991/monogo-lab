@@ -15,8 +15,43 @@
 //   });
 
 
-// On Button Click Create POP-OUT MODEL
+// On Button Click - NOTE - Create POP-OUT MODEL
 $("#modalBttn").on('click',function(){
-    console.log("Modal was Triggered")
+
+    // Console Logging
+    console.log("Modal was Triggered");
+
+    // Define Article Id
+    var articleId = $("#modalBttn").attr("data-id");
+
+    // Log Modal
+    console.log("Article Id: ",articleId);
+
+
+    // QUERY NOTES DATA:
+    // $.ajax({
+    //     method: "GET",
+    //     url: "/articles/" 
+    // })
+
+
+    // Show Modal
     $('#modal').modal('show');
+});
+
+
+// On Button Click - SAVE - Upsert Note
+$("#saveBttn").on('click',function(){
+
+    // Console Logging
+    console.log("Save Bttn Triggeed");
+
+    // Define Article Id
+    var articleId = $("#modalBttn").attr("data-id");
+
+    // Log Modal
+    console.log("Article Id: ",articleId);
+
+    // SAVE NOTES DATA:
+
 });
